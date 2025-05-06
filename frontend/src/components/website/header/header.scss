@@ -1,0 +1,288 @@
+@import "../../../styles/_variables.scss";
+@import "../../../scss/responsive.scss";
+@import "../../../scss/variables.scss";
+
+header {
+  &.light-theme {
+    background-color: $light-background;
+    color: $light-text-color;
+  }
+
+  &.dark-theme {
+    background-color: $dark-background;
+    color: $dark-text-color;
+  }
+
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 15px;
+    background-color: $light-background;
+    color: $light-text-color;
+
+    @include md {
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+
+      @include md {
+        display: none;
+      }
+    }
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    align-items: center;
+    background-color: $light-background;
+    color: $light-text-color;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      column-gap: 6px;
+
+      .logo__icon {
+        font-size: 40px;
+      }
+      span {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      &:hover {
+        color: $light-blue-accent;
+      }
+    }
+
+    .center {
+      display: flex;
+      column-gap: 16px;
+      a {
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: $light-text-color;
+
+        &:hover {
+          color: $light-blue-accent;
+          text-decoration: underline;
+        }
+      }
+
+      .active {
+        color: $light-blue-accent;
+      }
+
+      @include md {
+        display: none;
+      }
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      column-gap: 3px;
+      cursor: pointer;
+      position: relative;
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        transition: transform 0.3s;
+        border: 2px solid $light-blue-accent;
+
+        &:hover {
+          transform: scale(1.1);
+          border-color: $dark-blue-accent;
+        }
+
+        @include md {
+          width: 30px;
+          height: 30px;
+        }
+      }
+      span {
+        font-size: 15px;
+        margin-left: 3px;
+
+        @include md {
+          font-size: 13px;
+        }
+      }
+
+      // dropdown
+      .dropdown__wrapper {
+        max-height: 0px;
+        overflow: hidden;
+        position: absolute;
+        top: 60px;
+        right: 15px;
+        border-radius: 3px;
+        transition: max-height 0.3s ease-in-out;
+        background-color: $light-background;
+        color: $light-text-color;
+
+        .dropdown__content {
+          margin: 10px 0;
+          width: 200px;
+          display: flex;
+          flex-direction: column;
+
+          .dropdown__item {
+            display: flex;
+            align-items: center;
+            column-gap: 13px;
+            margin: 2px 0;
+            text-decoration: none;
+            padding: 6px 5px;
+            color: $light-text-color;
+
+            .icon {
+              margin-left: 10px;
+            }
+            span {
+              font-size: 15px;
+            }
+
+            &:hover {
+              background-color: $light-blue-accent;
+              color: white;
+            }
+          }
+        }
+      }
+
+      .dropdown__wrapper__active {
+        max-height: 140px;
+        overflow: hidden;
+        position: absolute;
+      }
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+      column-gap: 20px;
+
+      @include md {
+        display: none;
+      }
+    }
+
+    .mobile__right {
+      display: none;
+      @include md {
+        display: block;
+      }
+    }
+
+    /* MOBILE MENU */
+    .mobile__nav__wrapper {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100vw;
+      height: 100vh;
+      transform: translateX(100%);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease-in-out;
+      z-index: 111;
+      background-color: $light-background;
+      color: $light-text-color;
+
+      @include md {
+        display: flex;
+      }
+      nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        a {
+          text-decoration: none;
+          margin-bottom: 20px;
+          color: $light-text-color;
+
+          &:hover {
+            color: $light-blue-accent;
+          }
+        }
+      }
+    }
+
+    .btn__close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+
+      .icon {
+        font-size: 25px;
+      }
+    }
+
+    .btn__icon {
+      outline: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      background-color: transparent;
+
+      &:hover {
+        background-color: $light-blue-accent;
+        color: white;
+      }
+    }
+
+    .mobile__nav__wrapper__active {
+      transform: translateX(0);
+    }
+  }
+}
+
+/* HOVER COLOR */
+
+.light {
+  a {
+    &:hover {
+      color: $dark-blue-hover;
+    }
+  }
+}
+
+.dark {
+  a {
+    &:hover {
+      color: $light-blue-hover;
+    }
+  }
+}
+
+/* Dark Theme */
+.dark-theme {
+  .topbar,
+  nav,
+  .dropdown__wrapper,
+  .mobile__nav__wrapper {
+    background-color: $dark-background;
+    color: $dark-text-color;
+  }
+
+  .center a,
+  .dropdown__item,
+  .mobile__nav__wrapper nav a {
+    color: $dark-text-color;
+  }
+}

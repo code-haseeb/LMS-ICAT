@@ -1,0 +1,76 @@
+@import "../../../scss/responsive.scss";
+@import "../../../scss/variables.scss";
+@import '../../../styles/variables';
+
+.hero__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 50px;
+  padding: 100px 50px;
+  @include md {
+    flex-direction: column;
+    width: 100%;
+    padding: 50px 20px;
+  }
+  .content {
+    h1 {
+      margin-bottom: 6px;
+      width: fit-content;
+      @include md {
+        text-align: center;
+        margin: 0 auto;
+      }
+      color: $blue-accent;
+    }
+    p {
+      text-align: justify;
+      line-height: 1.8rem;
+      margin-bottom: 20px;
+      &:hover {
+        color: $dark-blue-accent;
+      }
+    }
+    .btn__read__more {
+      @include md {
+        text-align: center;
+      }
+      button {
+        background-color: $blue-accent;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: $dark-blue-accent;
+        }
+      }
+    }
+  }
+  .image {
+    width: 100%;
+    img {
+      width: 350px;
+      height: 350px;
+      border-radius: 5px;
+      border: 2px solid $blue-accent;
+
+      @include lg {
+        width: 250px;
+        height: 250px;
+      }
+
+      @include md {
+        width: 100%;
+        margin-top: 35px;
+      }
+
+      &:hover {
+        border-color: $dark-blue-accent;
+      }
+    }
+  }
+}
